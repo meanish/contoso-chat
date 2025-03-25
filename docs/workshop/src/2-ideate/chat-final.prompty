@@ -1,6 +1,6 @@
 ---
 name: Contoso Chat Prompt
-description: A retail assistent for Contoso Outdoors products retailer.
+description: A retail assistant for Contoso Outdoors products retailer.
 authors:
   - Cassie Breviu
   - Seth Juarez
@@ -8,9 +8,9 @@ model:
   api: chat
   configuration:
     type: azure_openai
-    azure_deployment: gpt-4o-mini
+    azure_deployment: ${env:AZURE_OPENAI_CHAT_DEPLOYMENT}
     azure_endpoint: ${ENV:AZURE_OPENAI_ENDPOINT}
-    api_version: 2024-08-01-preview
+    api_version: 2023-07-01-preview
   parameters:
     max_tokens: 128
     temperature: 0.2
@@ -66,9 +66,8 @@ The customer's name is {{customer.firstName}} {{customer.lastName}} and is {{cus
 {{question}}
 
 # Instructions
-Reference other items purchased specifically by name and description that 
-would go well with the items found above. Be brief and concise and use appropriate emojis.
-
+Reference other items purchased specifically by name and description that would go well with the items found above. 
+Be brief and concise and use appropriate emojis.
 
 {% for item in history %}
 {{item.role}}:
